@@ -1,0 +1,35 @@
+@use '../functions/getters' as func;
+
+.navigation {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 20rem;
+    height: 100vh;
+    padding-inline: 3rem;
+
+    background-color: func.get-color(light);
+
+    transform: translateX(100%);
+
+    transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+
+        height: 100%;
+        padding: 0;
+
+        list-style: none;
+    }
+
+    &__item-title {
+        color: func.get-color(primary);
+        font-size: 2rem;
+        font-weight: 400;
+        text-decoration: none;
+    }
+}

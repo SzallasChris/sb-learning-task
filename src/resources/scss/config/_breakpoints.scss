@@ -1,0 +1,18 @@
+/**
+ * A map of breakpoints.
+ * xs: 0 Mobile-portrait
+ * sm: 576px (36em) Mobile-landscape and larger
+ * md: 768px (48em) Tablet-portrait and larger
+ * lg: 992px (62em) Tablet-landscape and larger
+ * xl: 1200px (75em) Laptops and larger
+ * xxl: 1400px (87.5em) Laptops and larger
+ */
+
+$breakpoints: (
+    xs: 0,
+    sm: 36em,
+    md: 48em,
+    lg: 62em,
+    xl: 75em,
+    xxl: 87.5em,
+) !default;

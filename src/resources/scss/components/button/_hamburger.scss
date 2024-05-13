@@ -1,0 +1,94 @@
+@use '../../functions/getters/getColor' as func;
+
+$hamburger-color: func.get-color(primary);
+$hamburger-width: 3.3rem;
+$hamburger-bar-height: 0.4rem;
+
+.hamburger {
+    &--collapse {
+        display: block;
+
+        width: $hamburger-width;
+        height: $hamburger-width;
+
+        cursor: pointer;
+
+        opacity: 0;
+        z-index: 2;
+
+        -webkit-touch-callout: none;
+
+        &:checked ~ .hamburger--menu .hamburger__bar {
+            opacity: 1;
+            transform: rotate(45deg) translate(0.1rem, -0.3rem);
+            background: $hamburger-color;
+        }
+
+        &:checked ~ .hamburger--menu .hamburger__bar:first-child {
+            width: $hamburger-width;
+        }
+
+        &:checked ~ .hamburger--menu .hamburger__bar:nth-child(2) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2);
+        }
+
+        &:checked ~ .hamburger--menu .hamburger__bar:nth-last-child(1) {
+            transform: rotate(-45deg) translate(-0.1rem, 0);
+        }
+
+        &:checked ~ .navigation {
+            transform: translateX(0);
+        }
+        
+    }
+
+    &--collapse,
+    &--menu {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+
+        display: block;
+    }
+
+    &--menu & {
+        &__bar {
+            position: relative;
+
+            display: block;
+            width: $hamburger-width;
+            height: $hamburger-bar-height;
+
+            margin-bottom: 0.5rem;
+
+
+            background: $hamburger-color;
+            border-radius: 0.3rem;
+
+            z-index: 1;
+
+            transform-origin: 0.4rem 0;
+
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+            background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+            width 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+            opacity 0.55s ease;
+
+            &:first-child  {
+                transform-origin: 0 0;
+                width: 2.7rem;
+                transform: translateX(calc(-100% + #{$hamburger-width}));
+            }
+
+            &:nth-last-child(2)  {
+                transform-origin: 0 100%;
+            }
+
+            &:nth-child(2)  {
+                width: 2.2rem;
+                transform: translateX(calc(-100% + #{$hamburger-width}));
+            }
+        }
+    }
+}

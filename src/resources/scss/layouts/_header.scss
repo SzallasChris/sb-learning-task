@@ -1,0 +1,23 @@
+@use "navigation";
+@use "../components/button/hamburger";
+@use "../functions/getters/getColor" as func;
+
+.header {
+    width: 100%;
+    height: 6rem;
+    background-color: func.get-color(light);
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__logo {
+        color: func.get-color(primary);
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+}
