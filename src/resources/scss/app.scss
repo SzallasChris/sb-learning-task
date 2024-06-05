@@ -1,0 +1,22 @@
+// Import normalize.css
+@use 'base/reset';
+@use 'base/general';
+
+// Import components
+@use 'components/container';
+@use 'components/button';
+@use 'components/card';
+
+// Import layouts
+@use 'layouts/header';
+@use 'layouts/footer';
+
+// Page
+@use 'pages/index';
+
+.grid {
+    padding-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}

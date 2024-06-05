@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     @include('layouts.head')
     <body>
-    <h1>Hi from Laravel</h1>
+        @include('layouts.header')
+        @yield('content')
+        @include('layouts.footer')
     </body>
 </html>

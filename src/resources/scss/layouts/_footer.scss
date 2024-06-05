@@ -1,0 +1,32 @@
+@use '../functions/colors';
+@use '../mixins/colors' as colorsMixin;
+@use '../mixins/spacing';
+@use '../mixins/animation';
+
+.footer {
+    @include spacing.paddingTop(2.25rem);
+    @include spacing.paddingBottom(3rem);
+    @include colorsMixin.color-styles('black');
+
+    &__content {
+        @include spacing.paddingX(1.5rem);
+        @include spacing.paddingY(1rem);
+        
+        background-color: colors.get-color('grey', 800);
+        color: colors.get-color('grey', 100);
+    }
+
+    &__legal {
+        @include spacing.paddingX(1.5rem);
+        @include spacing.paddingY(1rem);
+        
+        background-color: colors.get-color('grey', 900);
+        color: colors.get-color('grey', 100);
+    }
+
+    &__bottom {
+        @include spacing.paddingX(1.5rem);
+        
+        border-top: 1px solid colors.get-color('grey', 900);
+    }
+}

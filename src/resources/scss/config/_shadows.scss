@@ -1,0 +1,9 @@
+@use '../config/typography' as typoConfig;
+@use '../functions/colors';
+
+$shadows: (
+    'lg': 0 0.75rem 1.5rem,
+)
+
+
+

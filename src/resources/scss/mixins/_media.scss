@@ -1,0 +1,17 @@
+@use '../config/breakpoints';
+
+@mixin breakpoint($breakpoint) {
+    @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+        @media (min-width: map-get(breakpoints.$breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn 'Unknown breakpoint: `#{$breakpoint}`.';
+    }
+}
+
+@mixin dark-mode {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}

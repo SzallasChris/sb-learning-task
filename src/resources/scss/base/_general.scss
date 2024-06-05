@@ -1,0 +1,51 @@
+@use '../mixins/typography' as typoMixin;
+@use '../config/typography' as typoConfig;
+@use '../functions/colors';
+@use '../mixins/media';
+
+body {
+    @include typoMixin.fontSans;
+    font-size: typoConfig.$baseFontSize;
+    color: colors.get-color('grey', 900);
+    line-height: 1.6rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include typoMixin.bold;
+    color: colors.get-color('primary');
+}
+
+p a {
+    color: colors.get-color('primary');
+    display: inline-block;
+}
+
+// For accessibility reasons (for able to navigate only with keyboard) show outlines on focus (disabled by reset.css)
+a, button, input, textarea {
+    &:focus {
+        outline: 1px solid colors.get-color('primary');
+        outline-offset: 1px;
+        outline-style: dashed;
+    }
+}
+
+// Dark mode styles
+@include media.dark-mode {
+    body {
+        background-color: colors.get-color('primary', 800, 'dark');
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: colors.get-color('primary', 400, 'dark');
+    }
+
+    p a {
+        color: colors.get-color('primary', 400, 'dark');
+    }
+
+    a, button, input, textarea {
+        &:focus {
+            outline-color: colors.get-color('primary', 400, 'dark');
+        }
+    }
+}

@@ -1,0 +1,108 @@
+// functions/_colors.scss
+@use 'sass:math';
+@use '../config/colors';
+
+// Generate Material Design color shades
+@function shade-percentage($from, $to) {
+    @return math.div(($from - $to), 100);
+}
+
+@function generate-material-shades($base-color, $base-shade) {
+    $shades: ();
+    $shade-values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
+    $adjustment-factor: 8; // Adjust this value to change the sensitivity of the lightening/darkening
+
+    @each $shade in $shade-values {
+        $percentage: shade-percentage($base-shade, $shade) * $adjustment-factor;
+
+        $new-color: null;
+        @if $shade < $base-shade {
+            $new-color: lighten($base-color, abs($percentage));
+        } @else if $shade > $base-shade {
+            $new-color: darken($base-color, abs($percentage));
+        } @else {
+            $new-color: $base-color;
+        }
+
+        $shades: map-merge(
+            $shades,
+            (
+                $shade: $new-color,
+            )
+        );
+    }
+
+    // Adding A100, A200, A400, A700 shades
+    $shades: map-merge(
+        $shades,
+        (
+            A100: mix(colors.$white, $base-color, 50%),
+            A200: mix(colors.$white, $base-color, 30%),
+            A400: mix(colors.$white, $base-color, 10%),
+            A700: mix(colors.$black, $base-color, 15%),
+        )
+    );
+
+    @return $shades;
+}
+
+$generated-colors-light: ();
+$generated-colors-dark: ();
+
+@each $color, $value in colors.$light-theme {
+    $shades: generate-material-shades(
+        map-get($value, 'color'),
+        map-get($value, 'shade')
+    );
+    $generated-colors-light: map-merge(
+        $generated-colors-light,
+        (
+            $color: $shades,
+        )
+    );
+}
+
+@each $color, $value in colors.$dark-theme {
+    $shades: generate-material-shades(
+        map-get($value, 'color'),
+        map-get($value, 'shade')
+    );
+    $generated-colors-dark: map-merge(
+        $generated-colors-dark,
+        (
+            $color: $shades,
+        )
+    );
+}
+
+// Get color from generated colors
+@function get-color($color, $shade: 500, $theme: 'light') {
+    @if $color == 'white' {
+        @return colors.$white;
+    } @else if $color == 'black' {
+        @return colors.$black;
+    } @else {
+        @if $theme == 'dark' {
+            @return map-get(map-get($generated-colors-dark, $color), $shade);
+        } @else {
+            @return map-get(map-get($generated-colors-light, $color), $shade);
+        }
+    }
+}
+
+// Get text color based on background color
+@function luminance($color) {
+    @return math.div((0.299 * red($color) + 0.587 * green($color) + 0.114 * blue($color)), 255);
+}
+
+@function is-dark($color) {
+    @return luminance($color) < 0.5;
+}
+
+@function text-color($background-color) {
+    @if is-dark($background-color) {
+        @return colors.$white;
+    } @else {
+        @return colors.$black;
+    }
+}

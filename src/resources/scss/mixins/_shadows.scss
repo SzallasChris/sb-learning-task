@@ -1,0 +1,6 @@
+@use '../config/shadows';
+@use '../functions/colors';
+
+@mixin shadow($shadow, $color: colors.get-color('primary', 800), $opacity: 0.1) {
+    box-shadow: map-get(shadows.$shadows, $shadow) rgba($color, $opacity);
+}
