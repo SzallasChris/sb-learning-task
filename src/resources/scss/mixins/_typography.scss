@@ -1,0 +1,13 @@
+@use '../config/typography';
+
+@mixin fontSans($fontFamily: map-get(typography.$fontFamily, 'sans')) {
+    font-family: #{$fontFamily}, sans-serif;
+}
+
+@mixin bold {
+    font-weight: bold;
+}
+
+@mixin semibold {
+    font-weight: 600;
+}

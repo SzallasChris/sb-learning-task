@@ -6,6 +6,12 @@ import stylelint from 'vite-plugin-stylelint';
 export default defineConfig({
     server: {
         host: '0.0.0.0',
+        hmr: {
+            host: 'localhost',
+        },
+    },
+    css: {
+        devSourcemap: true,
     },
     plugins: [
         laravel({

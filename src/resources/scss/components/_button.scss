@@ -1,0 +1,65 @@
+@use '../functions/colors' as colors;
+@use '../mixins/colors' as colorMixins;
+@use '../mixins/spacing';
+@use '../mixins/typography';
+@use '../mixins/animation';
+@use '../mixins/media';
+
+.button {
+    @include spacing.padding(0.5rem 2rem);
+    @include typography.bold;
+    @include spacing.rounded('xl');
+    @include animation.transition(background-color color);
+
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+
+    @at-root a#{&} {
+        text-decoration: none;
+    }
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    &--primary {
+        @include colorMixins.color-styles('primary', 500, true);
+    }
+
+    &--secondary {
+        @include colorMixins.color-styles('secondary', 500, true);
+    }
+
+    &--outline {
+        &.button--primary {
+            @include colorMixins.color-outline-styles('primary', 500, true);
+        }
+
+        &.button--secondary {
+            @include colorMixins.color-outline-styles('secondary', 500, true);
+        }
+    }
+
+    // Dark mode styles
+    @include media.dark-mode {
+        &--primary {
+            @include colorMixins.color-styles('primary', 500, true, 'dark');
+        }
+
+        &--secondary {
+            @include colorMixins.color-styles('secondary', 500, true, 'dark');
+        }
+
+        &--outline {
+            &.button--primary {
+                @include colorMixins.color-outline-styles('primary', 500, true, 'dark');
+            }
+
+            &.button--secondary {
+                @include colorMixins.color-outline-styles('secondary', 500, true, 'dark');
+            }
+        }
+    }
+}

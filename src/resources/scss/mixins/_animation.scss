@@ -1,0 +1,5 @@
+@use '../config/animation';
+
+@mixin transition($property: all, $duration: animation.$duration, $timing-function: animation.$timingFunction, $delay: animation.$delay) {
+    transition: $property $duration $timing-function $delay;
+}

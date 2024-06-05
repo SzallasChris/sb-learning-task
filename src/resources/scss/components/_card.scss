@@ -1,0 +1,48 @@
+@use '../mixins/spacing';
+@use '../mixins/shadows';
+@use '../mixins/media';
+@use '../mixins/colors.scss' as colorMixins;
+@use '../functions/colors';
+
+.card {
+    @include spacing.rounded;
+    @include shadows.shadow('lg');
+    overflow: hidden;
+
+    @include colorMixins.color-styles('white');
+
+    &__image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+
+    &__header {
+        @include spacing.paddingX(1.25rem);
+        @include spacing.paddingTop(2rem);
+
+        @include media.breakpoint('md') {
+            @include spacing.paddingX;
+        @include spacing.paddingTop;
+        }
+    }
+
+    &__body {
+        @include spacing.padding(2rem 1.25rem 1.25rem);
+
+        @include media.breakpoint('md') {
+            @include spacing.padding;
+        }
+    }
+
+    &__footer {
+        @include spacing.paddingX;
+        @include spacing.paddingBottom;
+    }
+
+    @include media.dark-mode {
+        @include colorMixins.color-styles('primary', 900, false, dark);
+        @include shadows.shadow(lg, colors.get-color('primary', 600, dark));
+    }
+}

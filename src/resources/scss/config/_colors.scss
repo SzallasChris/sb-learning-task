@@ -1,0 +1,32 @@
+$white: #FFFFFF;
+$black: #000000;
+
+$light-theme: (
+    'primary': (
+        'color': #008EC4,
+        'shade': 500,
+        ),
+    'secondary': (
+        'color': #008395,
+        'shade': 600,
+        ),
+    'grey': (
+        'color': #1A1A1A,
+        'shade': 800,
+        ),
+);
+
+$dark-theme: (
+    'primary': (
+        'color': #008EC4,
+        'shade': 500,
+        ),
+    'secondary': (
+        'color': #008395,
+        'shade': 500,
+        ),
+    'grey': (
+        'color': #1A1A1A,
+        'shade': 800,
+        ),
+);

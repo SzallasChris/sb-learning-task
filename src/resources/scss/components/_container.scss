@@ -1,0 +1,25 @@
+@use '../mixins/spacing';
+@use '../mixins/media';
+@use '../config/breakpoints' as breakpointsConfig;
+@use '../mixins/shadows';
+
+.container {
+    @include spacing.paddingX(1.25rem);
+    @include spacing.marginAuto;
+
+    @include media.breakpoint('sm') {
+        max-width: map-get(breakpointsConfig.$breakpoints, 'sm');
+    }
+
+    @include media.breakpoint('md') {
+        max-width: map-get(breakpointsConfig.$breakpoints, 'md');
+    }
+
+    @include media.breakpoint('lg') {
+        max-width: map-get(breakpointsConfig.$breakpoints, 'lg');
+    }
+
+    @include media.breakpoint('xl') {
+        max-width: map-get(breakpointsConfig.$breakpoints, 'xl');
+    }
+}

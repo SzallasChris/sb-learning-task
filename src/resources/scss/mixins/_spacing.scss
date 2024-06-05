@@ -1,0 +1,69 @@
+@use '../config/spacing';
+
+@mixin rounded($borderRadius: 'md') {
+    border-radius: map-get(spacing.$borderRadius, $borderRadius);
+}
+
+@mixin paddingTop($paddingTop: spacing.$padding) {
+    padding-top: $paddingTop;
+}
+
+@mixin paddingRight($paddingRight: spacing.$padding) {
+    padding-right: $paddingRight;
+}
+
+@mixin paddingBottom($paddingBottom: spacing.$padding) {
+    padding-bottom: $paddingBottom;
+}
+
+@mixin paddingLeft($paddingLeft: spacing.$padding) {
+    padding-left: $paddingLeft;
+}
+
+@mixin paddingX($paddingX: spacing.$padding) {
+    padding-left: $paddingX;
+    padding-right: $paddingX;
+}
+
+@mixin paddingY($paddingY: spacing.$padding) {
+    padding-top: $paddingY;
+    padding-bottom: $paddingY;
+}
+
+@mixin padding($padding: spacing.$padding) {
+    padding: $padding;
+}
+
+@mixin marginTop($marginTop: spacing.$margin) {
+    margin-top: $marginTop;
+}
+
+@mixin marginRight($marginRight: spacing.$margin) {
+    margin-right: $marginRight;
+}
+
+@mixin marginBottom($marginBottom: spacing.$margin) {
+    margin-bottom: $marginBottom;
+}
+
+@mixin marginLeft($marginLeft: spacing.$margin) {
+    margin-left: $marginLeft;
+}
+
+@mixin marginX($marginX: spacing.$margin) {
+    margin-left: $marginX;
+    margin-right: $marginX;
+}
+
+@mixin marginY($marginY: spacing.$margin) {
+    margin-top: $marginY;
+    margin-bottom: $marginY;
+}
+
+@mixin margin($margin: spacing.$margin) {
+    margin: $margin;
+}
+
+@mixin marginAuto {
+    margin: auto;
+}
